@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "base-no-be"
+  },
+  "targets": {
+    "base-no-be": {
+      "hosting": {
+        "vision-x": [
+          "operation-vision-x"
+        ]
+      }
+    }
+  }
+}
