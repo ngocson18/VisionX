@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, docData, getFirestore, collectionData, collection, CollectionReference, doc, setDoc, getDocs, DocumentData, collectionSnapshots  } from '@angular/fire/firestore';
-import { Observable, from, map } from 'rxjs';
+import { Observable, from, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +13,17 @@ export class TestService {
   ) {}
 
   getAll(): Observable<any> {
-    const jc = collection(this.firestore, 'Test');
-    console.log(jc);
-    
-    const a = collectionSnapshots(jc)
+    let allDoc: any[] = [];
+    const collectionRef = collection(this.firestore, 'Test');
+    from(getDocs(collectionRef))
     .pipe(
-      map((snapshots) =>
-       {
-        console.log(snapshots);
-        snapshots.map((snapshot) => {
-          return { ...snapshot.data(), id: snapshot.id }
+       map((users: any) => {
+        users.forEach((doc: any) => {
+          allDoc.push(doc.data());
         })
-       }
-      )
+      })
     )
-    console.log(a);
-    return a;
+    .subscribe();
+    return of(allDoc);
   }
 }

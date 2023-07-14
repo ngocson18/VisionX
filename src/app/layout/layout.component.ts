@@ -9,18 +9,27 @@ import { TestService } from '../services/test.service';
 })
 export class LayoutComponent implements OnInit {
   isCollapsed = false;
+  listUserTest = [];
   constructor(
     private testService: TestService
   ) {
     
   }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
+    this.getAllDataTest();
+  }
+
+  public getAllDataTest(): void {
     this.testService.getAll()
     .pipe(
       tap(res => {
-        console.log(res);
+        if (res) {
+          this.listUserTest = res;
+          console.log(this.listUserTest);
+        }
       })
-    ).subscribe()
+    )
+    .subscribe();
   }
 }
