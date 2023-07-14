@@ -13,7 +13,6 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import zh from '@angular/common/locales/zh';
 import vi from '@angular/common/locales/vi';
-import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -22,7 +21,8 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { LayoutComponent } from './layout/layout.component';
-
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -53,7 +53,8 @@ registerLocaleData(vi);
     RouterModule.forRoot([
       { path: '', component: AppComponent },
     ]),
-    AngularFireModule.initializeApp(environment.firebase)
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     { 
