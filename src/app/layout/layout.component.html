@@ -1,5 +1,5 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
+  <!-- <nz-sider class="menu-sidebar"
             nzCollapsible
             nzWidth="256px"
             nzBreakpoint="md"
@@ -22,17 +22,17 @@
           </li>
         </ul>
       </li>
-      <!-- <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a>Basic Form</a>
           </li>
         </ul>
-      </li> -->
+      </li>
     </ul>
-  </nz-sider>
+  </nz-sider> -->
   <nz-layout>
-    <nz-header>
+    <!-- <nz-header class="sticky top-0 z-10">
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
             <span class="trigger"
@@ -41,9 +41,9 @@
             ></span>
         </span>
       </div>
-    </nz-header>
+    </nz-header> -->
     <nz-content>
-      <div class="inner-content">
+      <div class="inner-content overflow-y-auto">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
