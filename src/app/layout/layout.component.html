@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<nz-layout class="h-screen">
   <!-- <nz-sider class="menu-sidebar"
             nzCollapsible
             nzWidth="256px"
@@ -43,8 +43,11 @@
       </div>
     </nz-header> -->
     <nz-content>
-      <div class="inner-content overflow-y-auto">
+      <div class="bg-white h-full overflow-y-auto">
         <router-outlet></router-outlet>
+        <nz-footer class="bg-gray-500 text-white text-center text-sm">
+          Copyrights © 2020 - 2033 VisionX All rights reserved
+        </nz-footer>
       </div>
     </nz-content>
   </nz-layout>

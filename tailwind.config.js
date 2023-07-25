@@ -7,6 +7,12 @@ module.exports = {
     extend: {
       fontFamily: {
         sigma: ['Sigmar']
+      },
+      backgroundImage: {
+        headerImage: "url('assets/images/header.jpg')",
+      },
+      height: {
+        inherit: 'inherit'
       }
     },
   },

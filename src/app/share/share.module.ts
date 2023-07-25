@@ -8,6 +8,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { CommonModule } from '@angular/common';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+
 const declarations: any[] = [];
 const imports = [
   CommonModule,
@@ -21,6 +23,7 @@ const imports = [
   NzButtonModule,
   NzCheckboxModule,
   NzLayoutModule,
+  NzCollapseModule
 ];
 const exports = [...imports];
 @NgModule({
