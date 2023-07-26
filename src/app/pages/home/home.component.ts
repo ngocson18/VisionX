@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @Component({
   standalone: true,
   imports: [
     RouterLink,
     NzCollapseModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   selector: 'app-home',
   templateUrl: './home.component.html',

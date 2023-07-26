@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzButtonModule } from 'ng-zorro-antd/button';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzButtonModule} from 'ng-zorro-antd/button';
+import {
+  SocialAuthService,
+  GoogleLoginProvider,
+  SocialUser,
+} from '@abacritt/angularx-social-login';
+import {CommonModule} from "@angular/common";
 
 @Component({
   standalone: true,
@@ -11,25 +17,26 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     ReactiveFormsModule,
     NzFormModule,
     NzInputModule,
-    NzButtonModule
+    NzButtonModule,
+    CommonModule
   ],
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  validateForm!: UntypedFormGroup;
+  loginForm!: UntypedFormGroup;
+  socialUser!: SocialUser;
+  isLoggedin?: boolean;
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log(this.router);
-      
+    if (this.loginForm.valid) {
       this.router.navigate(['/home']);
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.loginForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
+          control.updateValueAndValidity({onlySelf: true});
         }
       });
     }
@@ -37,14 +44,37 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+    private socialAuthService: SocialAuthService
+  ) {
+    let user = JSON.parse(JSON.stringify(localStorage.getItem('user')));
+    if (user) {
+      this.router.navigate(['/wedding']);
+    }
+  }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
+    this.loginForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true]
     });
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      localStorage.setItem('user', JSON.stringify(this.socialUser));
+      this.isLoggedin = user != null;
+      this.router.navigate(['/wedding']);
+    });
+
+  }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  logOut(): void {
+    this.socialAuthService.signOut();
+    localStorage.clear();
   }
 }

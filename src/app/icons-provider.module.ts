@@ -7,6 +7,7 @@ import {
   FormOutline,
   DashboardOutline
 } from '@ant-design/icons-angular/icons';
+import { TemplatesComponent } from './pages/templates/templates.component';
 
 const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
 
@@ -15,6 +16,9 @@ const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline
   exports: [NzIconModule],
   providers: [
     { provide: NZ_ICONS, useValue: icons }
+  ],
+  declarations: [
+    TemplatesComponent
   ]
 })
 export class IconsProviderModule {

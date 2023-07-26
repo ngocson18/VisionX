@@ -1,0 +1,42 @@
+<div class="bg-white">
+  <div class="bg-headerImage h-[70vh] mb-3.5">
+    <div class="text-center h-[70vh] flex flex-col bg-black bg-opacity-60 justify-center items-center">
+      <div class="bg-[#DF3367] text-4xl border text-white rounded-[20px] py-3 px-10 w-fit mx-auto">iWEDDING</div>
+      <p class="font-sigma font-normal text-[40px] text-white mb-4 uppercase">KHO GIAO DIỆN WEBSITE ĐÁM CƯỚI</p>
+      <p class="font-normal text-white text-2xl mb-5">Hãy chọn cho mình một giao diện miễn phí và chuyên nghiệp cho ngày
+        trọng đại của bạn.</p>
+    </div>
+  </div>
+  <img class="relative -top-40 w-full" src="assets/images/hero-shape.svg"/>
+  <div class=" relative -top-36 mx-auto max-w-2xl px-4 py-5 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8">
+      <a *ngFor="let template of listTemplate" href="#"
+         class="group border relative rounded-3xl shadow-2xl hover:text-black pb-14">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img [src]="template.image"
+               alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+               class="h-full w-full object-cover object-center rounded-3xl">
+        </div>
+        <div *ngIf="template.isVIP"
+             class="bg-[#ffc107] absolute text-[14px] text-black px-2 rounded-3xl w-fit right-3.5 -mt-2.5">VIP
+        </div>
+        <div *ngIf="!template.isVIP"
+             class="bg-[#6c757d] absolute text-[14px] text-white px-2 rounded-3xl w-fit right-3.5 -mt-2.5">Miễn phí
+        </div>
+        <div class="flex flex-row items-center justify-items-start px-5 mt-3.5">
+          <span class="text-xl mr-1.5 relative bottom-0.5" nz-icon nzType="crown" nzTheme="outline"></span>
+          <p class="font-bold text-xl">{{template.name}}</p>
+        </div>
+        <div class="px-5 text-sm text-[#6c757d] mt-1">{{template.description}}</div>
+        <div class="flex flex-row justify-center items-center gap gap-x-1.5 mt-4 absolute bottom-3.5 w-full">
+          <button nz-button class="bg-gray-400 text-white rounded-[10px] w-[110px] text-sm h-[30px] pt-[5px]"
+                  [nzSize]="size">Xem trước
+          </button>
+          <button nz-button class="bg-[#df3367] text-white rounded-[10px] w-[110px] text-sm h-[30px] pt-[5px]"
+                  [nzSize]="size">Tạo website
+          </button>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
