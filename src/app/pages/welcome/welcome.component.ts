@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import {FormsModule} from "@angular/forms";
+
 @Component({
+  standalone: true,
+  imports: [
+    RouterLink,
+    NzCollapseModule,
+    FormsModule
+  ],
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
