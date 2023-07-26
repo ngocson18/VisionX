@@ -10,11 +10,11 @@ import {FormsModule} from "@angular/forms";
     NzCollapseModule,
     FormsModule
   ],
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class WelcomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   panels = [
     {
