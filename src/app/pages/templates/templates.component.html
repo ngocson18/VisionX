@@ -7,15 +7,15 @@
         trọng đại của bạn.</p>
     </div>
   </div>
-  <img class="relative -top-40 w-full" src="assets/images/hero-shape.svg"/>
+  <img alt="hero" class="relative -top-40 w-full" src="assets/images/hero-shape.svg" priority/>
   <div class=" relative -top-36 mx-auto max-w-2xl px-4 py-5 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8">
-      <a *ngFor="let template of listTemplate" href="#"
+      <a *ngFor="let template of listTemplate" [routerLink]="template.routerLink"
          class="group border relative rounded-3xl shadow-2xl hover:text-black pb-14">
         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
           <img [src]="template.image"
                alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-               class="h-full w-full object-cover object-center rounded-3xl">
+               class="h-full w-full object-cover object-center rounded-3xl" priority>
         </div>
         <div *ngIf="template.isVIP"
              class="bg-[#ffc107] absolute text-[14px] text-black px-2 rounded-3xl w-fit right-3.5 -mt-2.5">VIP
@@ -29,14 +29,17 @@
         </div>
         <div class="px-5 text-sm text-[#6c757d] mt-1">{{template.description}}</div>
         <div class="flex flex-row justify-center items-center gap gap-x-1.5 mt-4 absolute bottom-3.5 w-full">
-          <button nz-button class="bg-gray-400 text-white rounded-[10px] w-[110px] text-sm h-[30px] pt-[5px]"
+          <button nz-button class="bg-gray-400 text-black rounded-[10px] w-[110px] text-sm h-[30px] pt-[5px]"
                   [nzSize]="size">Xem trước
           </button>
           <button nz-button class="bg-[#df3367] text-white rounded-[10px] w-[110px] text-sm h-[30px] pt-[5px]"
-                  [nzSize]="size">Tạo website
+                  [nzSize]="size">Tạo
           </button>
         </div>
       </a>
     </div>
   </div>
 </div>
+<!--<div class="preview">-->
+<!--  <div [innerHTML]="htmlStr"></div>-->
+<!--</div>-->
